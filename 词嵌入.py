@@ -9,6 +9,9 @@ def dm():
     print(f"分词结果: {words}")
 
     # 创建词嵌入层 参一：词表大小 参二：词向量的维度
+    """
+    词嵌入相当于把一个一维的每个分量表示词索引的句子转换成二维的每一行代表一个词的矩阵
+    """
     embed = nn.Embedding(len(words), 4)
     #enumerate()：返回列表中的每个值和其对应的索引
     for i, word in enumerate(words):

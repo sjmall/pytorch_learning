@@ -10,7 +10,7 @@ num_chars = 15
 batch_size = 80
 lr = 0.001
 epochs = 50
-temperature = 0.8
+temperature = 1.3
 
 # todo:获取数据
 def bulid_vocab():
@@ -210,17 +210,19 @@ def web_evaluate(start_word, length, t):
     return lyric_result
 
 
-# --- Gradio 界面配置 ---
-demo = gr.Interface(
-    fn=web_evaluate,  # 网页要绑定的 Python 函数
-    inputs=[
-        gr.Textbox(label="请输入起始词（比如：女人、晴天、退后）", value="女人"),
-        gr.Slider(minimum=20, maximum=200, step=10, value=100, label="生成歌词长度"),
-        gr.Slider(minimum=0.5, maximum=1.5, step=0.1, value=0.8, label="创造力温度 (越低越保守，越高越奔放)")
-    ],
-    outputs=gr.Textbox(label="AI方文山 倾情创作：", lines=8),
-    title="周杰伦歌词 AI 生成器",
-    description="基于 RNN 神经网络训练的歌词生成器，输入一个词，为你谱写周氏情歌。"
-)
+# evaluate('爱情',111)
 
-demo.launch(share = True)
+# # --- Gradio 界面配置 ---
+# demo = gr.Interface(
+#     fn=web_evaluate,  # 网页要绑定的 Python 函数
+#     inputs=[
+#         gr.Textbox(label="请输入起始词（比如：女人、晴天、退后）", value="女人"),
+#         gr.Slider(minimum=20, maximum=200, step=10, value=100, label="生成歌词长度"),
+#         gr.Slider(minimum=0.5, maximum=1.5, step=0.1, value=0.8, label="创造力温度 (越低越保守，越高越奔放)")
+#     ],
+#     outputs=gr.Textbox(label="AI方文山 倾情创作：", lines=8),
+#     title="周杰伦歌词 AI 生成器",
+#     description="基于 RNN 神经网络训练的歌词生成器，输入一个词，为你谱写周氏情歌。"
+# )
+#
+# demo.launch(share = True)
